@@ -8,7 +8,7 @@ def RecurseThroughTree(parent):
         RecurseThroughTree(os.path.join(parent, dir))
 
     for file in [f for f in ret if os.path.isfile(os.path.join(parent, f))]:
-        if file.endswith('.csproj'):
+        if file.endswith('.csproj') or file.endswith('.vcxproj'):
             with open(os.path.join(parent, file), 'r+') as openedFile:
                 content = openedFile.read()
                 altered = content.replace('<TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>', \
